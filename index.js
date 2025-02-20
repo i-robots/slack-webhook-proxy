@@ -11,7 +11,7 @@ app.use(cors()); // Allow all origins (customize as needed)
 
 app.post('/send-to-slack', async (req, res) => {
     try {
-        const slackWebhookUrl = process.env.SLACK_WEBHOOK_URL;
+        const slackWebhookUrl = `https://hooks.slack.com/triggers/${process.env.SLACK_WEBHOOK_URL}`;
 
         if (!slackWebhookUrl) {
             return res.status(500).json({ error: 'Slack webhook URL is missing' });

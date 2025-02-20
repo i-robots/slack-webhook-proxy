@@ -7,9 +7,11 @@ dotenv.config(); // Load environment variables
 
 const app = express();
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use(cors()); // Allow all origins (customize as needed)
 
 app.post('/send-to-slack', async (req, res) => {
+    console.log('Received data:', req.body);
     try {
         const slackWebhookUrl = process.env.SLACK_WEBHOOK_URL;
 
